@@ -1,0 +1,10 @@
+LT1001_Doan Xuan Thanh_5.6_100_IT_Doctor_1000000.0
+ST1002_Doan Chi Binh_4.6_69_Financial department_Head of department_1300000.0
+ST1003_Lu Bo_6.8_88_Network adminstration department_Head of department_1300000.0
+ST1004_Trieu Van_3.7_88_Network adminstration department_Deputy head of department_100000.0
+LT1005_Tran Trung Tin_7.6_110_IT_Doctor_1000000.0
+ST1006_Tran Dai Quang_6.9_120_Bussiness Adminstration_Bachelor_0.0
+LT1007_Ton Nu Hue Tran_7.6_110_Social science and humanities_Master_500000.0
+ST1008_Nguyen Ba Dao_5.7_99_Security department_Excutive staff_0.0
+LT1009_Vo Van Khai_7.6_50_Sport science_Bachelor_300000.0
+LT1010_Tran Quang Khai_5.0_100_IT_Bachelor_300000.0
