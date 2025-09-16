@@ -279,53 +279,41 @@ public class university {
     }
 
     // 16. Increase salary coefficient of all employees
-    public ArrayList<employee> increaseSalaryCoefficientOfAllEmployee(double increasingRate) {
-        ArrayList<employee> newEmployeeList = new ArrayList<employee>();
-
-        // Iterate through all employees in the list
-        for (employee employee_one : this.employeeList) {
-            // Increase salary coefficient for lecturers
-            if (employee_one.getEmployeeID().startsWith("LT")) {
-                String[] details = employee_one.toString().split("_");
-                newEmployeeList
-                        .add(new lecturer(details[0], details[1], Double.parseDouble(details[2]) * (1 + increasingRate),
-                                Integer.parseInt(details[3]), details[4], details[5]));
-            } // Increase salary coefficient for staff
-            else if (employee_one.getEmployeeID().startsWith("ST")) {
-                String[] details = employee_one.toString().split("_");
-                newEmployeeList
-                        .add(new staff(details[0], details[1], Double.parseDouble(details[2]) * (1 + increasingRate),
-                                Integer.parseInt(details[3]), details[4], details[5]));
+    public ArrayList<employee> increaseSalaryCoefficientOfAllEmployee(double increasingRate) {	
+            ArrayList<employee> newEmployeeList = new ArrayList<employee>();
+    
+            for(employee employee_one  : this.employeeList) {
+                if(employee_one.getEmployeeID().startsWith("LT")) {
+                    String[] details = employee_one.toString().split("_");
+                    newEmployeeList.add(new lecturer(details[0], details[1], Double.parseDouble(details[2]) * (1 + increasingRate), Integer.parseInt(details[3]), details[4], details[5]));
+                }
+                else if(employee_one.getEmployeeID().startsWith("ST")) {
+                    String[] details = employee_one.toString().split("_");
+                    newEmployeeList.add(new staff(details[0], details[1], Double.parseDouble(details[2]) * (1 + increasingRate), Integer.parseInt(details[3]), details[4], details[5]));
+                }
             }
+            this.employeeList = newEmployeeList;
+            return newEmployeeList;
         }
-
-        return newEmployeeList;
-    }
-
+    
     // 17. Decrease salary coefficient of all employees
-    public ArrayList<employee> decreaseSalaryCoefficientOfAllEmployee(double decreasingRate) {
-        ArrayList<employee> newEmployeeList = new ArrayList<employee>();
-
-        // Iterate through all employees in the list
-        for (employee employee_one : this.employeeList) {
-            // Decrease salary coefficient for lecturers
-            if (employee_one.getEmployeeID().startsWith("LT")) {
-                String[] details = employee_one.toString().split("_");
-                newEmployeeList
-                        .add(new lecturer(details[0], details[1], Double.parseDouble(details[2]) * (1 - decreasingRate),
-                                Integer.parseInt(details[3]), details[4], details[5]));
-            } // Decrease salary coefficient for staff
-                newEmployeeList
-                        .add(new staff(details[0], details[1], Double.parseDouble(details[2]) * (1 - decreasingRate),
-                                Integer.parseInt(details[3]), details[4], details[5]));
-				String[] details = employee_one.toString().split("_");
-				newEmployeeList.add(new staff(details[0], details[1], Double.parseDouble(details[2]) * (1 - decreasingRate), Integer.parseInt(details[3]), details[4], details[5]));
+    public ArrayList<employee> decreaseSalaryCoefficientOfAllEmployee(double decreasingRate) {	
+            ArrayList<employee> newEmployeeList = new ArrayList<employee>();
+    
+            for(employee employee_one  : this.employeeList) {
+                if(employee_one.getEmployeeID().startsWith("LT")) {
+                    String[] details = employee_one.toString().split("_");
+                    newEmployeeList.add(new lecturer(details[0], details[1], Double.parseDouble(details[2]) * (1 - decreasingRate), Integer.parseInt(details[3]), details[4], details[5]));
+                }
+                else if(employee_one.getEmployeeID().startsWith("ST")) {
+                    String[] details = employee_one.toString().split("_");
+                    newEmployeeList.add(new staff(details[0], details[1], Double.parseDouble(details[2]) * (1 - decreasingRate), Integer.parseInt(details[3]), details[4], details[5]));
+                }
             }
-        
-
-        return newEmployeeList;
-    }
-
+            this.employeeList = newEmployeeList;
+            return newEmployeeList;
+        }    
+    
     // 18. Get employee ID and salary of lecturers with salary higher than a
     // specified value
     public LinkedHashMap<String, Double> getEmployeeID_LecturerHaveSalaryHigherThan(double lowerBound) {
@@ -396,13 +384,23 @@ public class university {
         try {
             BufferedWriter writer = new BufferedWriter(new FileWriter(filePath));
             for (employee employee : employeeList) {
+                StringBuilder line = new StringBuilder();
+                line.append(employee.getEmployeeID()).append(",");
+                line.append(employee.getFullName()).append(",");
+                line.append(employee.getSalaryCoefficient()).append(",");
+                line.append(employee.getWorkingDay()).append(",");
+    
                 if (employee instanceof staff) {
                     staff staff = (staff) employee;
-                    writer.write(staff.toString());
+                    line.append(staff.getDepartment()).append(",");
+                    line.append(staff.getDuty());
                 } else if (employee instanceof lecturer) {
                     lecturer lecturer = (lecturer) employee;
-                    writer.write(lecturer.toString());
+                    line.append(lecturer.getFaculty()).append(",");
+                    line.append(lecturer.getDegree());
                 }
+    
+                writer.write(line.toString());
                 writer.newLine(); // Write a new line after each employee
             }
             writer.close();

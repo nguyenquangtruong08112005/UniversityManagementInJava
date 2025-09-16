@@ -19,7 +19,7 @@ public class menu {
             System.out.println("8. Decrease salary coefficient of all employees by a given value");
             System.out.println("9. Print out the total salary of all employees");
             System.out.println("10. Print out the lecturers and staff with salary more than a given value");
-            System.out.println("11. Arrange the list of lecturers/staff by salary");
+            System.out.println("11. Print arranged list of lecturers/staff by salary");
             System.out.println("12. Save changes");
 			
 			int choice = 0;
@@ -85,7 +85,7 @@ public class menu {
                     input.nextLine(); // Consume the newline character left after nextDouble()
                     break;
                 case 11:
-                    System.out.println("Arranging the list of lecturers/staff by salary:\n");
+                    System.out.println("Print the  arranged list of lecturers/staff by salary:\n");
                     System.out.println("1. Arrange lecturers by ascending salary");
                     System.out.println("2. Arrange lecturers by descending salary");
                     System.out.println("3. Arrange staff by ascending salary");
